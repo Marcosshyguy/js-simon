@@ -4,18 +4,33 @@
 
 // creo una funzione che fa visualizzare 5 numeri casuali
 // a quetsa funzione attivo un timer di tot secondi appna appare sull dom in h1
-7//finito di visualizza nascondo i numeri con none
+//finito di visualizza nascondo i numeri con none
 // finito il chiedo all'utente con prompt di inserire tramite un ciclo for uno ad uno i numeri che ha visto 
 // insersco i numeri in un array cje dovrà confrontarsi con quello dei numeri casuali iniziale
 // fare confronto dicendo quanti sono stati trovati e quali corrispondono
  
+// html number displayer
+let number = document.getElementById("number")
+
+// displaybutton
+let displayButton = document.getElementById("display")
 
 // creo array per contenere array casuali
-alert("lmcsdkjc")
+let casualNumber = []
 
- const ger = displayCasualNumber(5)
+// li genero e li leggo con ciclo displayCasualNumberor 
+const cpuNumbers = displayCasualNumber(5);
+console.log(cpuNumbers, casualNumber)
 
- console.log(ger)
+// stampo i numeri su html
+number.innerHTML = cpuNumbers
+
+// imposto il timer di visualizzazione
+setTimeout (function(){
+    number.classList.add("red")
+}, 3000)
+
+
 
 
 
@@ -26,29 +41,27 @@ alert("lmcsdkjc")
 // creo una funzione che mi produca numeri casuali
 
 /**
- * five number generator put in an array
+ * five number generator that put them put in an array
  * @returns {Array} 
  */
 function displayCasualNumber(numberQuantity){
-    const casualNumber = []
+    
     while (casualNumber.length < numberQuantity){
         const generatedNumber = parseInt(Math.floor(Math.random() * 100 + 1))
         if(!casualNumber.includes(generatedNumber)){
             casualNumber.push(generatedNumber)
         }
     }
-    return casualNumber
+    let arrayElement;
+    for(let arrayIndex = 0; arrayIndex < casualNumber.length; arrayIndex++){
+          arrayElement = casualNumber[arrayIndex];
+        }
+
+        return arrayElement
+            
 }
 
 
-
-
-// const bombs = [];
-//     while (bombs.length < 16) {
-//     const randomNumber = Math.floor(Math.random() * numberGenerated + 1);
-//     if (!bombs.includes(randomNumber)) {
-//       bombs.push(randomNumber);
-//     }
-//   }
-//     return bombs;
+// function displayNone(htmlElement){
+//     htmlElement.classList.add("d-none");
 // }
