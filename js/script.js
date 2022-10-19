@@ -43,8 +43,6 @@ console.log(userAnswers)
 
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////7
 // Function
 // creo una funzione che mi produca numeri casuali
@@ -61,13 +59,14 @@ function displayCasualNumber(numberQuantity){
             casualNumber.push(generatedNumber)
         }
     }
-    let arrayElement;
+    
     for(let arrayIndex = 0; arrayIndex < casualNumber.length; arrayIndex++){
-          arrayElement = casualNumber[arrayIndex];
-        }
+          let arrayElement = casualNumber[arrayIndex];
+          console.log(arrayElement);
+          
 
-        return arrayElement
-            
+          return arrayElement
+        }  
 }
 
 
