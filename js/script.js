@@ -27,8 +27,14 @@ number.innerHTML = cpuNumbers
 
 // imposto il timer di visualizzazione
 setTimeout (function(){
-    number.classList.add("red")
+    hideNumber (number)
 }, 3000)
+
+
+
+
+
+
 
 
 
@@ -62,6 +68,18 @@ function displayCasualNumber(numberQuantity){
 }
 
 
-// function displayNone(htmlElement){
-//     htmlElement.classList.add("d-none");
-// }
+
+
+
+
+
+// ui function
+
+/**
+ * hide elemnet on html
+ * @param {number} ThingsToHide
+ * @returns {object class change}
+ */
+function hideNumber(ThingsToHide){
+    varre.classList.add("d-none")
+}
