@@ -17,6 +17,8 @@ let displayButton = document.getElementById("display")
 
 // creo array per contenere array casuali
 let casualNumber = []
+// creo array per contenere risposte utente
+let userAnswers = []
 
 // li genero e li leggo con ciclo displayCasualNumberor 
 const cpuNumbers = displayCasualNumber(5);
@@ -30,7 +32,8 @@ setTimeout (function(){
     hideNumber (number)
 }, 3000)
 
-
+setTimeout( askForNumber, 3550);
+console.log(userAnswers)
 
 
 
@@ -68,10 +71,20 @@ function displayCasualNumber(numberQuantity){
 }
 
 
-
-
-
-
+/**
+ * collector of user answer
+ * @param {Array} emptyArray empty array to fill with user answer
+ * @param {Number} numberOfAnswer  number of answer
+ * @returns {array}
+ */
+function askForNumber() {
+    while(userAnswers.length < 5){
+        let answer = parseInt(prompt("dimmi quali numeri hai visto uno alla volta"))
+        userAnswers.push(answer);
+        }
+        return userAnswers
+    }
+    
 
 // ui function
 
@@ -80,6 +93,6 @@ function displayCasualNumber(numberQuantity){
  * @param {number} ThingsToHide
  * @returns {object class change}
  */
-function hideNumber(ThingsToHide){
-    varre.classList.add("d-none")
+function hideNumber(thingsToHide){
+    thingsToHide.classList.add("d-none")
 }
