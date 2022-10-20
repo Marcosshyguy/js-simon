@@ -42,7 +42,7 @@ console.log(userAnswers)
 
 // aggiungo una funzione che confronti i 2 array che abbiamo prodotto
 
-const comparedResultArray = compareArrayElements(cpuNumbers, userAnswers);
+const comparedResultArray = compareArrayElements(userAnswers,casualNumber);
 console.log(comparedResultArray)
 
 
@@ -94,11 +94,11 @@ function askForNumber(emptyArray) {
  * @param {Array} userArray
  * @returns {Array}
  */
-function compareArrayElements(cpuArray, userArray){
+function compareArrayElements(userArray, cpuArray){
     const comparedArray = []
-    for(let i = 0; i < cpuArray.length; i++){
-        let thisElement = cpuArray[i]                       //<----------------way to compare 2 arrays's element
-        if(userArray.includes(thisElement)){
+    for(let i = 0; i < userArray.length; i++){
+        let thisElement = userArray[i]                       //<----------------way to compare 2 arrays's element
+        if(cpuArray.includes(thisElement)){
             comparedArray.push(thisElement)
         }
     }
