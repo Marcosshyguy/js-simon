@@ -34,15 +34,12 @@ setTimeout (function(){
 }, 3000)
 
 // chiedo all'utente di inserire i numeri che si ricorda
-setTimeout (function(){
-    askForNumber (userAnswers)
-    // altro metodo =number.innerHTML=""
-}, 3500)
-console.log(userAnswers)
+let opla = setTimeout (askForNumber,3500)
+console.log(opla)
 
 // aggiungo una funzione che confronti i 2 array che abbiamo prodotto
 
-const comparedResultArray = compareArrayElements(userAnswers,casualNumber);
+const comparedResultArray = compareArrayElements(opla,casualNumber);
 console.log(comparedResultArray)
 
 
@@ -79,13 +76,13 @@ function displayCasualNumber(emptyArray, numberQuantity){
  * @param {Number} numberOfAnswer  number of answer
  * @returns {array}
  */
-function askForNumber(emptyArray) {
-    while(emptyArray.length < 5){
+function askForNumber() {
+    while(userAnswers.length < 5){
         let answer = parseInt(prompt("dimmi quali numeri hai visto uno alla volta"))
-        emptyArray.push(answer);
-        
-        }
-        return emptyArray
+        userAnswers.push(answer);
+        return userAnswers
+        }  
+        return userAnswers
     }
     
 /**
