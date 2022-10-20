@@ -9,7 +9,7 @@
 // insersco i numeri in un array cje dovrà confrontarsi con quello dei numeri casuali iniziale
 // fare confronto dicendo quanti sono stati trovati e quali corrispondono
  
-// html number displayer
+// html number displayer div
 let number = document.getElementById("number")
 
 // displaybutton
@@ -21,8 +21,8 @@ let casualNumber = []
 let userAnswers = []
 
 // li genero e li leggo con ciclo displayCasualNumberor 
-const cpuNumbers = displayCasualNumber(5);
-console.log(cpuNumbers, casualNumber)
+const cpuNumbers = displayCasualNumber(casualNumber, 5);
+console.log(cpuNumbers)
 
 // stampo i numeri su html
 number.innerHTML = cpuNumbers
@@ -30,12 +30,20 @@ number.innerHTML = cpuNumbers
 // imposto il timer di visualizzazione
 setTimeout (function(){
     hideNumber (number)
+    // altro metodo =number.innerHTML=""
 }, 3000)
 
-setTimeout( askForNumber, 3550);
+// chiedo all'utente di inserire i numeri che si ricorda
+setTimeout (function(){
+    askForNumber (userAnswers)
+    // altro metodo =number.innerHTML=""
+}, 3500)
 console.log(userAnswers)
 
+// aggiungo una funzione che confronti i 2 array che abbiamo prodotto
 
+const comparedResultArray = compareArrayElements(cpuNumbers, userAnswers);
+console.log(comparedResultArray)
 
 
 
@@ -49,24 +57,19 @@ console.log(userAnswers)
 
 /**
  * five number generator that put them put in an array
+ * @param  {Number} numberQuantity number of raay element to generate
+ * @param {Array} emptyArray empty array
  * @returns {Array} 
  */
-function displayCasualNumber(numberQuantity){
+function displayCasualNumber(emptyArray, numberQuantity){
     
-    while (casualNumber.length < numberQuantity){
+    while (emptyArray.length < numberQuantity){
         const generatedNumber = parseInt(Math.floor(Math.random() * 100 + 1))
-        if(!casualNumber.includes(generatedNumber)){
-            casualNumber.push(generatedNumber)
+        if(!emptyArray.includes(generatedNumber)){
+            emptyArray.push(generatedNumber)
         }
     }
-    
-    for(let arrayIndex = 0; arrayIndex < casualNumber.length; arrayIndex++){
-          let arrayElement = casualNumber[arrayIndex];
-          console.log(arrayElement);
-          
-
-          return arrayElement
-        }  
+        return emptyArray
 }
 
 
@@ -76,14 +79,36 @@ function displayCasualNumber(numberQuantity){
  * @param {Number} numberOfAnswer  number of answer
  * @returns {array}
  */
-function askForNumber() {
-    while(userAnswers.length < 5){
+function askForNumber(emptyArray) {
+    while(emptyArray.length < 5){
         let answer = parseInt(prompt("dimmi quali numeri hai visto uno alla volta"))
-        userAnswers.push(answer);
+        emptyArray.push(answer);
+        
         }
-        return userAnswers
+        return emptyArray
     }
     
+/**
+ * Description
+ * @param {Array} cpuArray
+ * @param {Array} userArray
+ * @returns {Array}
+ */
+function compareArrayElements(cpuArray, userArray){
+    const comparedArray = []
+    for(let i = 0; i < cpuArray.length; i++){
+        let thisElement = cpuArray[i]                       //<----------------way to compare 2 arrays's element
+        if(userArray.includes(thisElement)){
+            comparedArray.push(thisElement)
+        }
+    }
+    return comparedArray
+}
+
+
+// funcyion printresult (arrayfinale){
+    // prendo con getid.innerHTML e stampo i numeriin dom eaggiungo anche quanti ne ho trovati mettendo lenghtdell'array+1
+// }
 
 // ui function
 
