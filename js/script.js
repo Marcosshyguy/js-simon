@@ -11,6 +11,7 @@
  
 // html number displayer div
 let number = document.getElementById("number")
+let result =document.getElementById("result")
 
 // displaybutton
 let displayButton = document.getElementById("display")
@@ -35,14 +36,16 @@ setTimeout (function(){
 
 // chiedo all'utente di inserire i numeri che si ricorda
 
-let opla = setTimeout (function(){
-    askForNumber (userAnswers)
+setTimeout (function(){
+    userAnswers = askForNumber (userAnswers);               //<-----------------prossima volta gli array vuoti meglio se me li creo dentro la funzione 
+    //perche larray lo rimepiva ma lo restituiva vuoto perche la funzione compare era fuori dal range di quetsa funzione
+    console.log(userAnswers);
+    // aggiungo una funzione che confronti i 2 array che abbiamo prodotto
+    
+    const comparedResultArray = compareArrayElements(userAnswers,casualNumber);
+    console.log(comparedResultArray)
+    result.innerHTML += `Hai trovato ${comparedResultArray.length} su 5: ${comparedResultArray}`
 }, 3500)
-console.log(userAnswers)
-// aggiungo una funzione che confronti i 2 array che abbiamo prodotto
-
-const comparedResultArray = compareArrayElements(opla,casualNumber);
-console.log(comparedResultArray)
 
 
 
@@ -74,8 +77,7 @@ function displayCasualNumber(emptyArray, numberQuantity){
 
 /**
  * collector of user answer
- * @param {Array} emptyArray empty array to fill with user answer
- * @param {Number} numberOfAnswer  number of answer
+ * @param {Array} emptyArraysec empty array to fill with user answer
  * @returns {array}
  */
 function askForNumber(emptyArraysec) {
